@@ -1,0 +1,457 @@
+/* style.css */
+
+:root {
+    --color-pastel-pink: #FFC0CB; /* Main Cute Pink */
+    --color-light-peach: #FFDAB9; /* Warm Peach */
+    --color-pale-lavender: #E6E6FA; /* Soft Lavender */
+    --color-mint-green: #B0E0E6; /* Powder Blue */
+    --color-cream: #FFFDD0; /* Soft Cream */
+    --color-dark-purple-text: #6A0572; /* Deep, Soft Purple Text */
+    --color-light-blue-accent: #ADD8E6; /* Light Blue Accent */
+    --color-accent-green: #8BC34A; /* Happy Green */
+    --color-accent-yellow: #FFEB3B; /* Bright Yellow */
+    --color-accent-red: #F44336; /* Vibrant Red */
+}
+
+body {
+    font-family: 'Playpen Sans Thai', sans-serif; /* Changed to Playpen Sans Thai */
+    background-color: var(--color-pale-lavender); /* Gentle lavender background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0f2fe' fill-opacity='0.6' fill-rule='evenodd'%3E%3Ccircle cx='40' cy='40' r='15'/%3E%3C/g%3E%3C/svg%3E"); /* Larger, softer circles pattern */
+    background-repeat: repeat;
+}
+.container {
+    background-color: white;
+    border-radius: 40px; /* Super duper rounded! */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15); /* Softer, prominent shadow */
+    padding: 45px; /* More padding */
+    max-width: 1050px; /* Wider */
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 7px solid var(--color-pastel-pink); /* Cute thick pink border */
+    transition: all 0.5s ease-in-out; /* Smooth transitions for container */
+}
+h1, h2, h3 {
+    color: var(--color-dark-purple-text);
+    font-weight: 900; /* Extra extra bold */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.08); /* More pronounced shadow */
+}
+p, label, th, td {
+    color: var(--color-dark-purple-text);
+}
+input, select, textarea {
+     font-weight: 600; /* Make input text slightly bolder */
+}
+
+/* --- Buttons --- */
+.cute-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 35px; /* Even larger hit area */
+    border-radius: 30px; /* Very rounded pill shape */
+    font-weight: 800; /* Bolder text for buttons */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy transition */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+    font-size: 1.3rem; /* Larger font */
+    border: none; /* No default border */
+    text-transform: uppercase; /* Slight uppercase for fun */
+    letter-spacing: 0.05em; /* Spaced out letters */
+}
+.cute-btn:hover {
+    transform: translateY(-7px) scale(1.03); /* More bouncy hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05); /* Slightly brighter on hover */
+}
+.cute-btn-primary {
+    background-image: linear-gradient(to right bottom, var(--color-pastel-pink), #ff69b4); /* Pink to Hot Pink */
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.cute-btn-secondary {
+    background-color: var(--color-light-blue-accent);
+    color: var(--color-dark-purple-text);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+.cute-btn-secondary:hover {
+    background-color: #87CEEB; /* Sky Blue */
+}
+.cute-btn-success {
+    background-color: var(--color-accent-green);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.cute-btn-success:hover {
+    background-color: #6B8E23; /* Darker green */
+}
+.cute-btn-danger {
+    background-color: var(--color-accent-red);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.cute-btn-danger:hover {
+    background-color: #D32F2F; /* Darker red */
+}
+.cute-btn-warning {
+    background-color: var(--color-accent-yellow);
+    color: var(--color-dark-purple-text); /* Already dark, good contrast */
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
+}
+.cute-btn-warning:hover {
+    background-color: #FFD600; /* Darker yellow */
+}
+.cute-btn-sm {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Login buttons specific sizing --- */
+.login-btn-group .cute-btn {
+    padding: 15px 25px; /* Slightly smaller than general cute-btn */
+    font-size: 1.1rem;
+    border-radius: 25px;
+    min-width: 180px; /* Ensure buttons have a minimum width */
+}
+.login-btn-group .cute-btn .text-4xl { /* Adjust icon size slightly */
+    font-size: 2.5rem;
+}
+
+
+/* --- Cards & Summary --- */
+.summary-card {
+    background-color: var(--color-cream);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    border: 3px dashed var(--color-light-blue-accent); /* Cute dashed border */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.summary-card:hover {
+    transform: translateY(-10px) scale(1.02); /* More lift and slight scale */
+}
+/* Adjusted font sizes for summary cards (smaller) */
+.summary-card .text-value {
+    font-size: 3rem; /* Adjusted from 4rem */
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.summary-card .text-label {
+    font-size: 1.1rem; /* Adjusted from 1.3rem */
+    font-weight: 700;
+}
+
+/* --- Status Pills --- */
+.status-pill {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: white; /* Default color for pills */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    min-width: 120px; /* Ensure consistent width */
+}
+.status-pending { 
+    background-color: var(--color-accent-yellow); 
+    color: black; /* CHANGE: Black text for yellow background for better contrast */
+}
+.status-approved { background-color: var(--color-accent-green); }
+.status-denied { 
+    background-color: var(--color-accent-red); 
+    color: white; /* ENSURED: White text for red background for best contrast */
+}
+
+/* --- Tables --- */
+.cute-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px; /* More space between rows */
+}
+.cute-table th, .cute-table td {
+    padding: 20px; /* More padding */
+    text-align: left;
+    background-color: var(--color-cream); /* Creamy background for rows */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Softer row shadow */
+    border-radius: 25px; /* Even more rounded cells */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid var(--color-pale-lavender); /* Subtle border for rows */
+}
+.cute-table th {
+    background-color: var(--color-mint-green);
+    font-weight: 900;
+    color: var(--color-dark-purple-text);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border: none; /* No border for header cells */
+}
+.cute-table thead tr th:first-child { border-top-left-radius: 25px; border-bottom-left-radius: 0; }
+.cute-table thead tr th:last-child { border-top-right-radius: 25px; border-bottom-right-radius: 0; }
+.cute-table tbody tr:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    background-color: #FFF8DC; /* Lighter cream on hover */
+}
+.cute-table td:first-child { border-top-left-radius: 25px; border-bottom-left-radius: 25px; }
+.cute-table td:last-child { border-top-right-radius: 25px; border-bottom-right-radius: 25px; }
+
+/* --- Forms --- */
+.cute-form input,
+.cute-form select,
+.cute-form textarea {
+    width: 100%;
+    padding: 18px;
+    border: 4px solid var(--color-light-blue-accent); /* Thicker, cuter border */
+    border-radius: 25px; /* More rounded */
+    background-color: #FEFEFE; /* Slightly off-white background */
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    color: var(--color-dark-purple-text);
+}
+.cute-form input:focus,
+.cute-form select:focus,
+.cute-form textarea:focus {
+    outline: none;
+    border-color: var(--color-pastel-pink); /* Pink focus */
+    box-shadow: 0 0 0 6px rgba(255, 192, 203, 0.4); /* Soft pink glow */
+}
+.cute-form label {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* --- Modals (Alerts/Confirms) --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Darker, more encompassing overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background-color: white;
+    padding: 50px; /* More padding */
+    border-radius: 35px; /* Super rounded */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 550px;
+    width: 90%;
+    transform: translateY(-80px) scale(0.7); /* Stronger bounce */
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Very springy */
+    border: 8px solid var(--color-pastel-pink); /* Pink border */
+}
+.modal.show .modal-content {
+    transform: translateY(0) scale(1);
+}
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* More space */
+    margin-top: 30px;
+}
+.modal-buttons .cute-btn {
+    box-shadow: none; /* No shadow on modal buttons */
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+.modal-buttons .cute-btn:hover {
+    transform: translateY(-5px); /* Smaller bounce */
+}
+.modal-content h3 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+.modal-content p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+/* --- Animations --- */
+@keyframes confetti-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.confetti {
+    position: fixed;
+    width: 18px; /* Bigger confetti */
+    height: 18px;
+    background-color: var(--color-accent-yellow);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: confetti-fall 4.5s forwards; /* Longer fall */
+    z-index: 9999;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.confetti:nth-child(2n) { background-color: var(--color-pastel-pink); }
+.confetti:nth-child(3n) { background-color: var(--color-light-blue-accent); }
+.confetti:nth-child(4n) { background-color: var(--color-accent-green); border-radius: 0; } /* Square confetti */
+.confetti:nth-child(5n) { background-color: var(--color-light-peach); }
+.confetti:nth-child(6n) { background-color: var(--color-pale-lavender); border-radius: 0; }
+
+@keyframes deny-burst {
+    0% { transform: scale(0.1); opacity: 1; filter: hue-rotate(0deg); }
+    50% { transform: scale(1.8); opacity: 0.8; filter: hue-rotate(180deg); }
+    100% { transform: scale(4); opacity: 0; filter: hue-rotate(360deg); }
+}
+.deny-animation {
+    position: absolute;
+    width: 90px; /* Larger burst */
+    height: 90px;
+    background-color: var(--color-accent-red);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: deny-burst 0.9s forwards; /* More impactful */
+    z-index: 9998;
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.8); /* Red glow */
+}
+
+/* Login page specific animation for title */
+@keyframes pulse-grow-shrink {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.animate-pulse-grow-shrink {
+    animation: pulse-grow-shrink 3s ease-in-out infinite;
+}
+
+@keyframes bounce-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.group:hover .group-hover\:animate-bounce-y {
+    animation: bounce-y 0.6s ease-in-out infinite alternate;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .container {
+        padding: 25px;
+        border-radius: 30px;
+        border-width: 5px;
+    }
+    h1, h2, h3 { font-size: 2.5rem; }
+    p, label, th, td { font-size: 0.95rem; }
+
+    .cute-btn {
+        padding: 15px 25px;
+        font-size: 1.1rem;
+        border-radius: 25px;
+    }
+    .cute-btn-sm {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+    .summary-card {
+        padding: 20px;
+        border-radius: 25px;
+        border-width: 2px;
+    }
+    /* Adjusted font sizes for summary cards on mobile */
+    .summary-card .text-value { font-size: 2.5rem; } /* Adjusted from 3rem */
+    .summary-card .text-label { font-size: 1rem; } /* Adjusted from 1.1rem */
+
+
+    /* Table specific adjustments for mobile portrait */
+    .cute-table thead {
+        display: none; /* Hide table headers on small screens */
+    }
+    .cute-table tbody, .cute-table tr {
+        display: block; /* Make tbody and tr behave like blocks */
+        width: 100%;
+    }
+    .cute-table tr {
+        margin-bottom: 15px; /* Space between card-like rows */
+        padding: 15px; /* Add padding to rows */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Re-add row shadow */
+        border-radius: 20px; /* Rounded corners for each row */
+        background-color: var(--color-cream); /* Ensure row background is cream */
+        border: 2px solid var(--color-pale-lavender); /* Subtle border for rows */
+    }
+    .cute-table td {
+        display: flex; /* Make cells flex containers */
+        justify-content: space-between; /* Space content and label */
+        align-items: center;
+        padding: 8px 0; /* Adjust padding for mobile cells */
+        border: none; /* Remove cell borders */
+        box-shadow: none; /* Remove cell shadow */
+        border-radius: 0; /* Remove cell border-radius */
+    }
+    .cute-table td::before {
+        content: attr(data-label); /* Display the data-label as the new header */
+        font-weight: 700;
+        color: var(--color-dark-purple-text);
+        min-width: 80px; /* Give space for labels */
+        margin-right: 10px;
+    }
+    /* Action buttons inside table on mobile */
+    .cute-table td:last-child {
+        justify-content: center; /* Center action buttons */
+        padding-top: 15px;
+    }
+
+
+    .cute-form input, .cute-form select, .cute-form textarea {
+        padding: 15px;
+        font-size: 1rem;
+        border-width: 3px;
+        border-radius: 20px;
+    }
+    .cute-form label { font-size: 1.1rem; }
+
+    .modal-content {
+        padding: 30px;
+        border-radius: 30px;
+        border-width: 6px;
+    }
+    .modal-content h3 { font-size: 2.5rem; }
+    .modal-content p { font-size: 1.15rem; }
+    .modal-buttons { gap: 15px; }
+    .modal-buttons .cute-btn {
+        padding: 12px 22px;
+        font-size: 1rem;
+    }
+
+    /* Login specific adjustments for mobile */
+    .login-btn-group {
+        flex-direction: column; /* Stack buttons vertically on mobile */
+        gap: 20px;
+    }
+    .login-btn-group .cute-btn {
+        width: 100%; /* Full width for buttons on mobile */
+    }
+}
