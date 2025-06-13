@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Playpen Sans Thai', sans-serif; /* Changed to Playpen Sans Thai */
+    font-family: 'Kanit', sans-serif; /* Changed to Kanit */
     background-color: var(--color-pale-lavender); /* Gentle lavender background */
     display: flex;
     justify-content: center;
