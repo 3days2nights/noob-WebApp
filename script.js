@@ -256,6 +256,28 @@ const createDenyAnimation = (event) => {
 };
 
 /**
+ * Helper function to format date to "D Month_abbr BE_year" (e.g., "6 มิ.ย. 2568")
+ * @param {string} dateString - The date string in `YYYY-MM-DD` format.
+ * @returns {string} Formatted date string.
+ */
+const formatThaiDate = (dateString) => {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+        return dateString; // Return original if invalid date
+    }
+
+    const day = date.getDate();
+    const monthNamesThai = [
+        "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.",
+        "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."
+    ];
+    const month = monthNamesThai[date.getMonth()];
+    const thaiYear = date.getFullYear() + 543; // Buddhist Era
+
+    return `${day} ${month} ${thaiYear}`;
+};
+
+/**
  * Renders the kid's dashboard with updated request data.
  */
 const renderKidDashboard = () => {
@@ -316,17 +338,8 @@ const renderKidDashboard = () => {
             const reason = request.reason || '';
             const statusValue = request.status || '';
 
-            // Robust Date/Time formatting
-            let displayDate = '';
-            if (request.date) {
-                if (request.date instanceof Date) { 
-                    displayDate = request.date.toISOString().split('T')[0];
-                } else if (typeof request.date === 'string' && request.date.includes('T')) { 
-                    displayDate = request.date.split('T')[0];
-                } else { 
-                    displayDate = String(request.date);
-                }
-            }
+            // Use the new formatThaiDate function for displayDate
+            const displayDate = formatThaiDate(request.date);
 
             let displayTimeFrom = '';
             if (request.timeFrom) {
@@ -449,17 +462,8 @@ const renderParentDashboard = () => {
             const reason = request.reason || '';
             const statusValue = request.status || '';
 
-            // Robust Date/Time formatting
-            let displayDate = '';
-            if (request.date) {
-                if (request.date instanceof Date) {
-                    displayDate = request.date.toISOString().split('T')[0];
-                } else if (typeof request.date === 'string' && request.date.includes('T')) {
-                    displayDate = request.date.split('T')[0];
-                } else {
-                    displayDate = String(request.date);
-                }
-            }
+            // Use the new formatThaiDate function for displayDate
+            const displayDate = formatThaiDate(request.date);
 
             let displayTimeFrom = '';
             if (request.timeFrom) {
@@ -583,7 +587,7 @@ const editRequest = (id) => {
     // For timeFrom input
     if (requestToEdit.timeFrom instanceof Date) {
         timeFromInput.value = requestToEdit.timeFrom.getUTCHours().toString().padStart(2, '0') + ':' +
-                              requestToEdit.timeFrom.getUTCMinutes().toString().padStart(2, '0');
+                                      requestToEdit.timeFrom.getUTCMinutes().toString().padStart(2, '0');
     } else if (typeof requestToEdit.timeFrom === 'string' && requestToEdit.timeFrom.match(/^\d{2}:\d{2}$/)) {
         timeFromInput.value = requestToEdit.timeFrom;
     } else if (typeof requestToEdit.timeFrom === 'string' && requestToEdit.timeFrom.includes('T')) {
@@ -606,7 +610,7 @@ const editRequest = (id) => {
     // For timeTo input
     if (requestToEdit.timeTo instanceof Date) {
         timeToInput.value = requestToEdit.timeTo.getUTCHours().toString().padStart(2, '0') + ':' +
-                            requestToEdit.timeTo.getUTCMinutes().toString().padStart(2, '0');
+                                    requestToEdit.timeTo.getUTCMinutes().toString().padStart(2, '0');
     } else if (typeof requestToEdit.timeTo === 'string' && requestToEdit.timeTo.match(/^\d{2}:\d{2}$/)) {
         timeToInput.value = requestToEdit.timeTo;
     } else if (typeof requestToEdit.timeTo === 'string' && requestToEdit.timeTo.includes('T')) {
@@ -650,7 +654,7 @@ const submitRequest = async (event) => {
         return;
     }
     // Date validation: Check if requestDate is in the past
-    // New Date() fromYYYY-MM-DD string is usually local date at midnight, so compare with today at midnight.
+    // New Date() from `YYYY-MM-DD` string is usually local date at midnight, so compare with today at midnight.
     const today = new Date();
     today.setHours(0,0,0,0); 
     const selectedDate = new Date(date);
@@ -781,7 +785,7 @@ let jsonpScriptCounter = 0;
 window._mainGoogleSheetWriteResponseHandler = (response) => { 
     Swal.close(); 
     if (response.status === 'success') {
-        
+        // Swal.fire for success will be called from submitRequest, not here to allow sound to play first
     } else {
         Swal.fire({
             icon: 'error',
