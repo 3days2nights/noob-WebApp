@@ -190,7 +190,7 @@ const showCustomModal = (title, message, showConfirm = false) => {
         modalTitle.textContent = title;
         modalMessage.textContent = message;
         modalConfirmBtn.classList.toggle('hidden', !showConfirm);
-        modalCancelBtn.textContent = showConfirm ? 'ยกเลิก 😔' : 'โอเคเลย! 😉'; 
+        modalCancelBtn.textContent = showConfirm ? 'ยกเลิก 😔' : 'เข้าใจแล้ว! 👍'; 
         
         customModal.classList.add('show');
 
@@ -278,6 +278,36 @@ const formatThaiDate = (dateString) => {
 };
 
 /**
+ * Helper function to format time value to "HH:MM" string, handling different input formats.
+ * This ensures time is displayed consistently regardless of how GAS sends it.
+ * @param {string|Date} timeValue - The time value (e.g., "10:00", "2025-06-15T10:00:00.000Z", or Date object).
+ * @returns {string} Formatted time string "HH:MM".
+ */
+const formatTimeForDisplay = (timeValue) => {
+    if (typeof timeValue === 'string') {
+        // If it's already an "HH:MM" string, use it directly
+        if (timeValue.match(/^\d{2}:\d{2}$/)) {
+            return timeValue;
+        }
+        // If it's an ISO string or other date string, try to parse and format local time
+        const date = new Date(timeValue);
+        // Check if date is valid. If it's a valid date, format it. Otherwise, return original string.
+        if (!isNaN(date.getTime())) {
+            const hours = date.getHours().toString().padStart(2, '0'); // Use getHours for local time
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+    } else if (timeValue instanceof Date) {
+        // If it's a Date object, format its local time
+        const hours = timeValue.getHours().toString().padStart(2, '0');
+        const minutes = timeValue.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+    // Fallback for unexpected formats
+    return String(timeValue || ''); 
+};
+
+/**
  * Renders the kid's dashboard with updated request data.
  */
 const renderKidDashboard = () => {
@@ -340,35 +370,9 @@ const renderKidDashboard = () => {
 
             // Use the new formatThaiDate function for displayDate
             const displayDate = formatThaiDate(request.date);
+            const displayTimeFrom = formatTimeForDisplay(request.timeFrom);
+            const displayTimeTo = formatTimeForDisplay(request.timeTo);
 
-            let displayTimeFrom = '';
-            if (request.timeFrom) {
-                if (request.timeFrom instanceof Date) {
-                    displayTimeFrom = request.timeFrom.getUTCHours().toString().padStart(2, '0') + ':' +
-                                      request.timeFrom.getUTCMinutes().toString().padStart(2, '0');
-                } else if (typeof request.timeFrom === 'string' && request.timeFrom.includes('T')) {
-                     // Try to parse ISO string to Date for UTC time extraction
-                     const tempDate = new Date(request.timeFrom);
-                     displayTimeFrom = !isNaN(tempDate.getTime()) ? tempDate.getUTCHours().toString().padStart(2, '0') + ':' + tempDate.getUTCMinutes().toString().padStart(2, '0') : '';
-                }
-                else { 
-                    displayTimeFrom = String(request.timeFrom);
-                }
-            }
-
-            let displayTimeTo = '';
-            if (request.timeTo) {
-                 if (request.timeTo instanceof Date) {
-                    displayTimeTo = request.timeTo.getUTCHours().toString().padStart(2, '0') + ':' +
-                                    request.timeTo.getUTCMinutes().toString().padStart(2, '0');
-                } else if (typeof request.timeTo === 'string' && request.timeTo.includes('T')) {
-                    const tempDate = new Date(request.timeTo);
-                    displayTimeTo = !isNaN(tempDate.getTime()) ? tempDate.getUTCHours().toString().padStart(2, '0') + ':' + tempDate.getUTCMinutes().toString().padStart(2, '0') : '';
-                }
-                else { 
-                    displayTimeTo = String(request.timeTo);
-                }
-            }
 
             const statusText = {
                 'รออนุมัติ': '⏳ รออนุมัติ',
@@ -464,34 +468,8 @@ const renderParentDashboard = () => {
 
             // Use the new formatThaiDate function for displayDate
             const displayDate = formatThaiDate(request.date);
-
-            let displayTimeFrom = '';
-            if (request.timeFrom) {
-                if (request.timeFrom instanceof Date) {
-                    displayTimeFrom = request.timeFrom.getUTCHours().toString().padStart(2, '0') + ':' +
-                                      request.timeFrom.getUTCMinutes().toString().padStart(2, '0');
-                } else if (typeof request.timeFrom === 'string' && request.timeFrom.includes('T')) {
-                     const tempDate = new Date(request.timeFrom);
-                     displayTimeFrom = !isNaN(tempDate.getTime()) ? tempDate.getUTCHours().toString().padStart(2, '0') + ':' + tempDate.getUTCMinutes().toString().padStart(2, '0') : '';
-                }
-                else {
-                    displayTimeFrom = String(request.timeFrom);
-                }
-            }
-
-            let displayTimeTo = '';
-            if (request.timeTo) {
-                 if (request.timeTo instanceof Date) {
-                    displayTimeTo = request.timeTo.getUTCHours().toString().padStart(2, '0') + ':' +
-                                    request.timeTo.getUTCMinutes().toString().padStart(2, '0');
-                } else if (typeof request.timeTo === 'string' && request.timeTo.includes('T')) {
-                    const tempDate = new Date(request.timeTo);
-                    displayTimeTo = !isNaN(tempDate.getTime()) ? tempDate.getUTCHours().toString().padStart(2, '0') + ':' + tempDate.getUTCMinutes().toString().padStart(2, '0') : '';
-                }
-                else {
-                    displayTimeTo = String(request.timeTo);
-                }
-            }
+            const displayTimeFrom = formatTimeForDisplay(request.timeFrom);
+            const displayTimeTo = formatTimeForDisplay(request.timeTo);
 
             const statusText = {
                 'รออนุมัติ': '⏳ รออนุมัติ',
@@ -584,51 +562,9 @@ const editRequest = (id) => {
         requestDateInput.value = '';
     }
     
-    // For timeFrom input
-    if (requestToEdit.timeFrom instanceof Date) {
-        timeFromInput.value = requestToEdit.timeFrom.getUTCHours().toString().padStart(2, '0') + ':' +
-                                      requestToEdit.timeFrom.getUTCMinutes().toString().padStart(2, '0');
-    } else if (typeof requestToEdit.timeFrom === 'string' && requestToEdit.timeFrom.match(/^\d{2}:\d{2}$/)) {
-        timeFromInput.value = requestToEdit.timeFrom;
-    } else if (typeof requestToEdit.timeFrom === 'string' && requestToEdit.timeFrom.includes('T')) {
-        try {
-            const tempDate = new Date(requestToEdit.timeFrom);
-            if (!isNaN(tempDate.getTime())) {
-                timeFromInput.value = tempDate.getUTCHours().toString().padStart(2, '0') + ':' +
-                                    tempDate.getUTCMinutes().toString().padStart(2, '0');
-            } else {
-                timeFromInput.value = '';
-            }
-        } catch (e) {
-            console.error('Error parsing ISO timeFrom string for edit:', requestToEdit.timeFrom, e);
-            timeFromInput.value = '';
-        }
-    } else {
-        timeFromInput.value = '';
-    }
-
-    // For timeTo input
-    if (requestToEdit.timeTo instanceof Date) {
-        timeToInput.value = requestToEdit.timeTo.getUTCHours().toString().padStart(2, '0') + ':' +
-                                    requestToEdit.timeTo.getUTCMinutes().toString().padStart(2, '0');
-    } else if (typeof requestToEdit.timeTo === 'string' && requestToEdit.timeTo.match(/^\d{2}:\d{2}$/)) {
-        timeToInput.value = requestToEdit.timeTo;
-    } else if (typeof requestToEdit.timeTo === 'string' && requestToEdit.timeTo.includes('T')) {
-        try {
-            const tempDate = new Date(requestToEdit.timeTo);
-            if (!isNaN(tempDate.getTime())) {
-                timeToInput.value = tempDate.getUTCHours().toString().padStart(2, '0') + ':' +
-                                    tempDate.getUTCMinutes().toString().padStart(2, '0');
-            } else {
-                timeToInput.value = '';
-            }
-        } catch (e) {
-            console.error('Error parsing ISO timeTo string for edit:', requestToEdit.timeTo, e);
-            timeToInput.value = '';
-        }
-    } else {
-        timeToInput.value = '';
-    }
+    // Use formatTimeForDisplay to ensure consistent output for input field
+    timeFromInput.value = formatTimeForDisplay(requestToEdit.timeFrom);
+    timeToInput.value = formatTimeForDisplay(requestToEdit.timeTo);
 
     requestLocationInput.value = requestToEdit.location || '';
     requestReasonInput.value = requestToEdit.reason || '';
@@ -644,8 +580,8 @@ const submitRequest = async (event) => {
     const id = requestId.value;
     const requester = requesterNameInput.value;
     const date = requestDateInput.value;
-    const timeFrom = timeFromInput.value;
-    const timeTo = timeToInput.value;
+    const timeFrom = timeFromInput.value; // These should already be HH:MM from input type="time"
+    const timeTo = timeToInput.value;     // These should already be HH:MM from input type="time"
     const location = requestLocationInput.value.trim();
     const reason = requestReasonInput.value.trim();
 
@@ -677,8 +613,8 @@ const submitRequest = async (event) => {
                 ...requests[requestIndex], 
                 requester,
                 date, 
-                timeFrom, 
-                timeTo, 
+                timeFrom, // Save as HH:MM directly from input
+                timeTo,   // Save as HH:MM directly from input
                 location,
                 reason,
                 status: 'รออนุมัติ' 
@@ -692,8 +628,8 @@ const submitRequest = async (event) => {
             id: crypto.randomUUID(),
             requester,
             date, 
-            timeFrom, 
-            timeTo, 
+            timeFrom, // Save as HH:MM directly from input
+            timeTo,   // Save as HH:MM directly from input
             location,
             reason,
             status: 'รออนุมัติ' 
