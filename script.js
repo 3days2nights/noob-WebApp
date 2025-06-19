@@ -131,6 +131,7 @@ let requests = [];
 
 // --- Data Management (Local Storage) ---
 const LOCAL_STORAGE_KEY = 'parentalPermissionRequestsCuteV3'; // Retain the same key
+const CURRENT_USER_STORAGE_KEY = 'currentUserCuteV3'; // New key for user session
 
 /**
  * Loads requests from Local Storage.
@@ -148,6 +149,23 @@ const loadRequests = () => {
  */
 const saveRequests = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(requests));
+};
+
+/**
+ * Loads current user from Local Storage.
+ */
+const loadCurrentUser = () => {
+    const storedUser = localStorage.getItem(CURRENT_USER_STORAGE_KEY);
+    currentUser = storedUser ? JSON.parse(storedUser) : null;
+    console.log('Loaded currentUser:', currentUser); // For debugging
+};
+
+/**
+ * Saves current user to Local Storage.
+ */
+const saveCurrentUser = () => {
+    localStorage.setItem(CURRENT_USER_STORAGE_KEY, JSON.stringify(currentUser));
+    console.log('Saved currentUser:', currentUser); // For debugging
 };
 
 // --- UI Rendering Functions ---
@@ -960,6 +978,7 @@ const fetchDataFromGoogleSheet = () => {
 loginParentBtn.addEventListener('click', () => {
     if (passwordInput.value === '111') {
         currentUser = { type: 'parent', name: 'พ่อ-แม่' };
+        saveCurrentUser(); // Add this line
         passwordInput.value = '';
         loginError.classList.add('hidden');
         playLoginSound(); 
@@ -973,6 +992,7 @@ loginParentBtn.addEventListener('click', () => {
 loginKidBtn.addEventListener('click', () => {
     if (passwordInput.value === '222') {
         currentUser = { type: 'kid', name: 'หนมปัง-เนยสด' }; 
+        saveCurrentUser(); // Add this line
         passwordInput.value = '';
         loginError.classList.add('hidden');
         playLoginSound(); 
@@ -993,6 +1013,7 @@ backToDashboardBtn.addEventListener('click', () => {
 logoutKidBtn.addEventListener('click', async () => {
     playLogoutSound(); 
     currentUser = null;
+    saveCurrentUser(); // Add this line to clear user from storage
     await showCustomModal('ออกจากระบบ 👋', 'บ๊ายบาย! ไว้มาใหม่นะหนมปัง-เนยสด! 👋💕', false);
     renderCurrentDashboardAfterDataLoaded(); 
 });
@@ -1000,11 +1021,20 @@ logoutKidBtn.addEventListener('click', async () => {
 logoutParentBtn.addEventListener('click', async () => {
     playLogoutSound(); 
     currentUser = null;
+    saveCurrentUser(); // Add this line to clear user from storage
     await showCustomModal('ออกจากระบบ 😴', 'ไปพักผ่อนได้แล้ว! พ่อแม่สุดเจ๋ง! 💖', false);
     renderCurrentDashboardAfterDataLoaded(); 
 });
 
 // Initial load: แสดงหน้า Login ก่อน, การดึงข้อมูลจาก Google Sheet จะเกิดขึ้นเมื่อ Login สำเร็จ
 document.addEventListener('DOMContentLoaded', () => {
-    renderCurrentDashboardAfterDataLoaded(); 
+    loadCurrentUser(); // Add this line to load user on startup
+    if (currentUser) { // Check if user was loaded from storage
+        // If a user is found in localStorage, try to fetch data.
+        // This is important because the dashboard relies on 'requests' data.
+        fetchDataFromGoogleSheet();
+    } else {
+        // If no user, just render the login page.
+        renderCurrentDashboardAfterDataLoaded();
+    }
 });
