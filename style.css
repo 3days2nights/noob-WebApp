@@ -11,6 +11,7 @@
     --color-accent-green: #8BC34A; /* Happy Green */
     --color-accent-yellow: #FFEB3B; /* Bright Yellow */
     --color-accent-red: #F44336; /* Vibrant Red */
+    --color-Powder-Blue: #B0E0E6; /* Main power blue */
 }
 
 body {
@@ -36,7 +37,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    border: 7px solid var(--color-pastel-pink); /* Cute thick pink border */
+    border: 7px solid var(--color-Powder-Blue); /* Cute thick pink border */
     transition: all 0.5s ease-in-out; /* Smooth transitions for container */
 }
 h1, h2, h3 {
@@ -229,7 +230,7 @@ input, select, textarea {
 .cute-form select:focus,
 .cute-form textarea:focus {
     outline: none;
-    border-color: var(--color-pastel-pink); /* Pink focus */
+    border-color: var(--color-Powder-Blue); /* Pink focus */
     box-shadow: 0 0 0 6px rgba(255, 192, 203, 0.4); /* Soft pink glow */
 }
 .cute-form label {
@@ -269,7 +270,7 @@ input, select, textarea {
     width: 90%;
     transform: translateY(-80px) scale(0.7); /* Stronger bounce */
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Very springy */
-    border: 8px solid var(--color-pastel-pink); /* Pink border */
+    border: 8px solid var(--color-Powder-Blue); /* Pink border */
 }
 .modal.show .modal-content {
     transform: translateY(0) scale(1);
@@ -315,7 +316,7 @@ input, select, textarea {
     z-index: 9999;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
-.confetti:nth-child(2n) { background-color: var(--color-pastel-pink); }
+.confetti:nth-child(2n) { background-color: var(--color-Powder-Blue); }
 .confetti:nth-child(3n) { background-color: var(--color-light-blue-accent); }
 .confetti:nth-child(4n) { background-color: var(--color-accent-green); border-radius: 0; } /* Square confetti */
 .confetti:nth-child(5n) { background-color: var(--color-light-peach); }

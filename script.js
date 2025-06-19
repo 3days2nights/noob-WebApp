@@ -317,8 +317,8 @@ const renderKidDashboard = () => {
     kidDashboard.classList.remove('hidden');
     kidNameDisplay.textContent = currentUser.name; 
 
-    // Filter requests for both 'หนมปัง' and 'เนยสด'
-    const filteredRequests = requests.filter(req => ['หนมปัง', 'เนยสด'].includes(req.requester));
+    // Filter requests for both 'หนมปัง' and 'เนยสด' and 'KK'
+    const filteredRequests = requests.filter(req => ['หนมปัง', 'เนยสด','KK'].includes(req.requester));
 
     const total = filteredRequests.length;
     const approved = filteredRequests.filter(req => req.status === 'อนุมัติ').length;
@@ -730,7 +730,7 @@ window._mainGoogleSheetWriteResponseHandler = (response) => {
             showConfirmButton: true,
             confirmButtonText: 'รับทราบ',
             customClass: {
-                popup: 'rounded-3xl border-4 border-pastel-pink',
+                popup: 'rounded-3xl border-4 border-Powder Blue',
                 title: 'text-dark-purple-text font-bold',
                 htmlContainer: 'text-dark-purple-text',
                 confirmButton: 'cute-btn cute-btn-danger'
@@ -758,7 +758,7 @@ const sendDataToGoogleSheet = (dataToSend) => {
             Swal.showLoading();
         },
         customClass: {
-            popup: 'rounded-3xl border-4 border-pastel-pink',
+            popup: 'rounded-3xl border-4 border-Powder Blue',
             title: 'text-dark-purple-text font-bold'
         }
     });
@@ -789,7 +789,7 @@ const sendDataToGoogleSheet = (dataToSend) => {
             showConfirmButton: true,
             confirmButtonText: 'ตกลง',
             customClass: {
-                popup: 'rounded-3xl border-4 border-pastel-pink',
+                popup: 'rounded-3xl border-4 border-Powder Blue',
                 title: 'text-dark-purple-text font-bold',
                 htmlContainer: 'text-dark-purple-text',
                 confirmButton: 'cute-btn cute-btn-danger'
@@ -811,7 +811,7 @@ const sendDataToGoogleSheet = (dataToSend) => {
                 showConfirmButton: true,
                 confirmButtonText: 'ตกลง',
                 customClass: {
-                    popup: 'rounded-3xl border-4 border-pastel-pink',
+                    popup: 'rounded-3xl border-4 border-Powder Blue',
                     title: 'text-dark-purple-text font-bold',
                     htmlContainer: 'text-dark-purple-text',
                     confirmButton: 'cute-btn cute-btn-warning'
@@ -842,7 +842,7 @@ window._mainGoogleSheetReadResponseHandler = (response) => {
             showConfirmButton: false,
             timer: 1500,
             customClass: {
-                popup: 'rounded-3xl border-4 border-pastel-pink',
+                popup: 'rounded-3xl border-4 border-Powder Blue',
                 title: 'text-dark-purple-text font-bold',
                 htmlContainer: 'text-dark-purple-text'
             }
@@ -856,7 +856,7 @@ window._mainGoogleSheetReadResponseHandler = (response) => {
             showConfirmButton: true,
             confirmButtonText: 'รับทราบ',
             customClass: {
-                popup: 'rounded-3xl border-4 border-pastel-pink',
+                popup: 'rounded-3xl border-4 border-Powder Blue',
                 title: 'text-dark-purple-text font-bold',
                 htmlContainer: 'text-dark-purple-text',
                 confirmButton: 'cute-btn cute-btn-danger'
@@ -887,7 +887,7 @@ const fetchDataFromGoogleSheet = () => {
             Swal.showLoading();
         },
         customClass: {
-            popup: 'rounded-3xl border-4 border-pastel-pink',
+            popup: 'rounded-3xl border-4 border-Powder Blue',
             title: 'text-dark-purple-text font-bold'
         }
     });
@@ -917,7 +917,7 @@ const fetchDataFromGoogleSheet = () => {
             showConfirmButton: true,
             confirmButtonText: 'ตกลง',
             customClass: {
-                popup: 'rounded-3xl border-4 border-pastel-pink',
+                popup: 'rounded-3xl border-4 border-Powder Blue',
                 title: 'text-dark-purple-text font-bold',
                 htmlContainer: 'text-dark-purple-text',
                 confirmButton: 'cute-btn cute-btn-danger'
@@ -941,7 +941,7 @@ const fetchDataFromGoogleSheet = () => {
                 showConfirmButton: true,
                 confirmButtonText: 'ตกลง',
                 customClass: {
-                    popup: 'rounded-3xl border-4 border-pastel-pink',
+                    popup: 'rounded-3xl border-4 border-Powder Blue',
                     title: 'text-dark-purple-text font-bold',
                     htmlContainer: 'text-dark-purple-text',
                     confirmButton: 'cute-btn cute-btn-warning'

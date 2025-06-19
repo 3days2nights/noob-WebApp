@@ -21,16 +21,16 @@
     <div class="container">
         <!-- Login Page -->
         <div id="loginPage" class="flex flex-col items-center justify-center p-8">
-            <h1 class="text-5xl lg:text-6xl font-bold mb-8 animate-pulse-grow-shrink">🏡 ระบบขออนุญาตพ่อแม่ 💖</h1>
+            <h1 class="text-5xl lg:text-6xl font-bold mb-8 animate-pulse-grow-shrink">🏡 ระบบ ขออนุญาต พ่อแม่ 💖</h1>
             <p class="text-2xl text-dark-purple-text mb-10 text-center font-medium">กรอกรหัสผ่าน แล้วเลือก Account ได้เลยจ้า! 🧐</p>
             <div class="space-y-6 w-full max-w-sm">
                 <input type="password" id="passwordInput" class="w-full p-4 border border-light-blue-accent rounded-3xl focus:outline-none focus:ring-6 focus:ring-pastel-pink text-lg text-center" placeholder="รหัสผ่าน">
-                <div class="flex flex-row space-x-4 justify-center login-btn-group">
+                <div class="flex flex-row space-x-1 justify-center login-btn-group">
                     <button id="loginParentBtn" class="cute-btn cute-btn-secondary group">
-                        <span class="mr-3 text-3xl group-hover:animate-bounce-y">👨‍👩‍👧‍👦</span> พ่อ-แม่
+                        <span class="mr-3 text-4xl group-hover:animate-bounce-y">👨‍👩‍👧‍👦</span> พ่อ แม่
                     </button>
                     <button id="loginKidBtn" class="cute-btn cute-btn-secondary group">
-                        <span class="mr-3 text-3xl group-hover:animate-bounce-y">👧👦</span> หนมปัง-เนยสด
+                        <span class="mr-3 text-4xl group-hover:animate-bounce-y">🍞🧈</span> หนมปัง เนยสด
                     </button>
                 </div>
             </div>
@@ -39,7 +39,7 @@
 
         <!-- Kid's Dashboard -->
         <div id="kidDashboard" class="dashboard-container hidden flex-col gap-8">
-            <h1 class="text-4xl lg:text-5xl font-bold mb-6">📋 คำขอของฉัน <span id="kidNameDisplay" class="text-pastel-pink"></span></h1>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-6">📋 คำขอของ <span id="kidNameDisplay" class="text-pastel-pink"></span></h1>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xl font-semibold text-dark-purple-text">
                 <div class="summary-card">
@@ -83,7 +83,7 @@
 
             <p class="text-dark-purple-text text-lg mt-8 p-6 bg-yellow-50 border-l-4 border-accent-yellow rounded-xl text-left font-medium">
                 <i class="fas fa-exclamation-triangle text-accent-yellow mr-3 text-2xl align-middle"></i>
-                <span class="font-bold text-yellow-800">⚠️ เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😠
+                <span class="font-bold text-yellow-800">เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😠
             </p>
             <button id="logoutKidBtn" class="cute-btn cute-btn-secondary mt-5 mx-auto"><i class="fas fa-sign-out-alt mr-3"></i> ออกจากระบบ</button>
         </div>
@@ -134,14 +134,15 @@
 
         <!-- New/Edit Request Form -->
         <div id="requestForm" class="dashboard-container hidden flex-col gap-8">
-            <h1 class="text-4xl lg:text-5xl font-bold mb-8">🙏 ขออนุญาตพ่อและแม่ <span class="text-pastel-pink">ด้วยความนอบน้อม</span></h1>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-8">🙏 ขออนุญาต พ่อและแม่ <span class="text-pastel-pink">ด้วยความนอบน้อมนะ</span></h1>
             <form id="permissionForm" class="p-8 bg-white rounded-3xl shadow-xl border-4 border-light-blue-accent cute-form">
                 <input type="hidden" id="requestId">
                 <div class="mb-6 text-left">
-                    <label for="requesterName" class="block text-dark-purple-text text-lg font-bold mb-2">เลือกชื่อสุดน่ารักของคุณ: <span class="text-accent-red">*</span></label>
+                    <label for="requesterName" class="block text-dark-purple-text text-lg font-bold mb-2">เลือกชื่อของคุณ: <span class="text-accent-red">*</span></label>
                     <select id="requesterName" class="w-full p-4 border border-light-blue-accent rounded-3xl focus:outline-none focus:ring-6 focus:ring-pastel-pink text-lg">
                         <option value="หนมปัง">หนมปัง 🍞</option>
                         <option value="เนยสด">เนยสด 🧈</option>
+			<option value="KK">KK 🍞+🧈</option>
                     </select>
                 </div>
                 <div class="mb-6 text-left">
@@ -170,7 +171,7 @@
             </form>
             <p class="text-dark-purple-text text-lg mt-8 p-6 bg-yellow-50 border-l-4 border-accent-yellow rounded-xl text-left font-medium">
                 <i class="fas fa-exclamation-triangle text-accent-yellow mr-3 text-2xl align-middle"></i>
-                <span class="font-bold text-yellow-800">⚠️ เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😠
+                <span class="font-bold text-yellow-800"> เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😠
             </p>
             <button id="backToDashboardBtn" class="cute-btn cute-btn-secondary mt-5 mx-auto"><i class="fas fa-arrow-left mr-3"></i> กลับหน้าหลัก</button>
         </div>
