@@ -260,6 +260,7 @@ const createConfetti = () => {
     }
 };
 
+
 /**
  * Creates an "explode" animation for denial.
  * @param {Event} event - The click event to get coordinates.

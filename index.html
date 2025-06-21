@@ -42,17 +42,17 @@
             <h1 class="text-4xl lg:text-5xl font-bold mb-6">📋 คำขอของ <span id="kidNameDisplay" class="text-pastel-pink"></span></h1>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xl font-semibold text-dark-purple-text">
-                <div class="summary-card">
+		<div class="summary-card">
+                    <div class="text-value text-accent-yellow" id="pendingRequestsKid">0</div>
+                    <div class="text-label">⏳ รออนุมัติ 🤞</div>
+		</div>
+ 		<div class="summary-card">
                     <div class="text-value text-dark-purple-text" id="totalRequestsKid">0</div>
                     <div class="text-label">คำขอทั้งหมด 📄</div>
                 </div>
                 <div class="summary-card">
                     <div class="text-value text-accent-green" id="approvedRequestsKid">0</div>
                     <div class="text-label">✅ อนุมัติแล้ว ✨</div>
-                </div>
-                <div class="summary-card">
-                    <div class="text-value text-accent-yellow" id="pendingRequestsKid">0</div>
-                    <div class="text-label">⏳ รออนุมัติ 🤞</div>
                 </div>
                 <div class="summary-card">
                     <div class="text-value text-accent-red" id="deniedRequestsKid">0</div>
@@ -83,7 +83,7 @@
 
             <p class="text-dark-purple-text text-lg mt-8 p-6 bg-yellow-50 border-l-4 border-accent-yellow rounded-xl text-left font-medium">
                 <i class="fas fa-exclamation-triangle text-accent-yellow mr-3 text-2xl align-middle"></i>
-                <span class="font-bold text-yellow-800">เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😠
+                <span class="font-bold text-yellow-800">เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😉
             </p>
             <button id="logoutKidBtn" class="cute-btn cute-btn-secondary mt-5 mx-auto"><i class="fas fa-sign-out-alt mr-3"></i> ออกจากระบบ</button>
         </div>
@@ -94,16 +94,16 @@
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xl font-semibold text-dark-purple-text">
                 <div class="summary-card">
+                    <div class="text-value text-accent-yellow" id="pendingRequestsParent">0</div>
+                    <div class="text-label">⏳ รออนุมัติ 🤞</div>                
+		</div>
+                <div class="summary-card">
                     <div class="text-value text-dark-purple-text" id="totalRequestsParent">0</div>
                     <div class="text-label">คำขอทั้งหมด 📄</div>
                 </div>
                 <div class="summary-card">
                     <div class="text-value text-accent-green" id="approvedRequestsParent">0</div>
                     <div class="text-label">✅ อนุมัติแล้ว ✨</div>
-                </div>
-                <div class="summary-card">
-                    <div class="text-value text-accent-yellow" id="pendingRequestsParent">0</div>
-                    <div class="text-label">⏳ รออนุมัติ 🤞</div>
                 </div>
                 <div class="summary-card">
                     <div class="text-value text-accent-red" id="deniedRequestsParent">0</div>
@@ -171,7 +171,7 @@
             </form>
             <p class="text-dark-purple-text text-lg mt-8 p-6 bg-yellow-50 border-l-4 border-accent-yellow rounded-xl text-left font-medium">
                 <i class="fas fa-exclamation-triangle text-accent-yellow mr-3 text-2xl align-middle"></i>
-                <span class="font-bold text-yellow-800"> เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😠
+                <span class="font-bold text-yellow-800"> เมื่ออนุมัติ</span> ลูกๆ จะได้สิทธิ์ออกจากบ้านแบบมีเงื่อนไขเท่านั้นนะ ห้ามดือ! (เด็ดขาด!) 😉
             </p>
             <button id="backToDashboardBtn" class="cute-btn cute-btn-secondary mt-5 mx-auto"><i class="fas fa-arrow-left mr-3"></i> กลับหน้าหลัก</button>
         </div>

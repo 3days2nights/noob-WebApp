@@ -316,6 +316,8 @@ input, select, textarea {
     z-index: 9999;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
+
+
 .confetti:nth-child(2n) { background-color: var(--color-Powder-Blue); }
 .confetti:nth-child(3n) { background-color: var(--color-light-blue-accent); }
 .confetti:nth-child(4n) { background-color: var(--color-accent-green); border-radius: 0; } /* Square confetti */
